@@ -11,15 +11,13 @@ export default class SearchImageAPI {
     this.page = 1;
   };
 
-    fetchImages() {
-      `${this.url}?image_type=photo&orientation=horizontal&q=${this.searchQuery}&page=${this.page}&per_page=12&key=${this.key}`;
-    return fetch(url)
-      .then(response => response.json())
-      .then(images => {
-        return images.hits;
-      })
-      .catch();
-  }
+    async fetchImages() {
+   const response = await fetch(
+      `${this.url}?image_type=photo&orientation=horizontal&q=${this.searchQuery}&page=${this.page}&per_page=12&key=${this.key}`,
+    );
+
+    return response.json()
+  };
 
   incrementPage() {
     this.page += 1;

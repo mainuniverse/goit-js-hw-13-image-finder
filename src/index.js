@@ -2,6 +2,7 @@
 import './sass/main.scss';
 import servise from './js/apiService.js';
 //import BtnLoadMore from './js/btnLoadMore.js';
+//import imageSearchFormTemplate from './js/templates/imagesearch.hbs';
 import imagesListTemplate from './js/templates/images.hbs';
 import imageCardTemplate from './js/templates/gallery.hbs';
 //import refs from './js/getRefs';
@@ -18,8 +19,7 @@ import { error } from '@pnotify/core';
 // btnLoadMore.refs.button.addEventListener('click', onLoadMore);
 // // Обработка формы запроса
 
-//import SearchImageAPI from './apiService';
-//import * as basicLightbox from 'basiclightbox';
+import * as basicLightbox from 'basiclightbox';
 const imageSearchInput = document.querySelector('#search-form');
 const imageSearchList = document.querySelector('.gallery');
 //const imageSearchCard = document.querySelector('.photo-card');
@@ -39,7 +39,7 @@ function imageSearch(event) {
   buttonDisplay(imageSearchMoreButton);
 }
 
-function imageSearcMore(event) {
+function imageSearchMore(event) {
   event.preventDefault();
   imageSearchAPI.incrementPage();
   imageSearchGetData(imageSearchInput.firstElementChild.value);
@@ -82,18 +82,18 @@ function imageSearchListClear() {
   imageSearchList.innerHTML = '';
 }
 
-// function imageSearchShowFull(event) {
-//   event.preventDefault();
-//   if (event.target.nodeName !== 'IMG') return;
-//   basicLightbox.create(event.originalTarget.outerHTML).show();
-// }
+function imageSearchShowFull(event) {
+  event.preventDefault();
+  if (event.target.nodeName !== 'IMG') return;
+  basicLightbox.create(event.originalTarget.outerHTML).show();
+}
 
-// function buttonNoDisplay(element) {
-//   element.classList.remove('button_display');
-//   element.classList.add('button_nodisplay');
-// }
+function buttonNoDisplay(element) {
+  element.classList.remove('button_display');
+  element.classList.add('button_nodisplay');
+}
 
-// function buttonDisplay(element) {
-//   element.classList.remove('button_nodisplay');
-//   element.classList.add('button_display');
-// }
+function buttonDisplay(element) {
+  element.classList.remove('button_nodisplay');
+  element.classList.add('button_display');
+}
