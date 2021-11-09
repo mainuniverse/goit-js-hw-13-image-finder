@@ -27,7 +27,7 @@ const imageSearchMoreButton = document.querySelector('#search-more');
 const imageSearchAPI = new servise();
 
 imageSearchInput.addEventListener('submit', imageSearch);
-imageSearchMoreButton.addEventListener('click', imageSearcMore);
+imageSearchMoreButton.addEventListener('click', imageSearchMore);
 imageSearchList.addEventListener('click', imageSearchShowFull);
 
 function imageSearch(event) {
@@ -88,12 +88,12 @@ function imageSearchListClear() {
 //   basicLightbox.create(event.originalTarget.outerHTML).show();
 // }
 
-function buttonNoDisplay(element) {
-  element.classList.remove('button_display');
-  element.classList.add('button_nodisplay');
-}
+// function buttonNoDisplay(element) {
+//   element.classList.remove('button_display');
+//   element.classList.add('button_nodisplay');
+// }
 
-function buttonDisplay(element) {
-  element.classList.remove('button_nodisplay');
-  element.classList.add('button_display');
-}
+// function buttonDisplay(element) {
+//   element.classList.remove('button_nodisplay');
+//   element.classList.add('button_display');
+// }
