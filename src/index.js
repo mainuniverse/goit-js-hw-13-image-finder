@@ -1,6 +1,6 @@
 //import './sass/main.scss';
 import './sass/main.scss';
-import servise from './js/apiService.js';
+import SearchImageAPI from './js/apiService.js';
 //import BtnLoadMore from './js/btnLoadMore.js';
 //import imageSearchFormTemplate from './js/templates/imagesearch.hbs';
 import imagesListTemplate from './js/templates/images.hbs';
@@ -10,10 +10,10 @@ import imageCardTemplate from './js/templates/gallery.hbs';
 import '@pnotify/core/dist/PNotify.css';
 import '@pnotify/desktop/dist/PNotifyDesktop';
 import '@pnotify/core/dist/BrightTheme.css';
-import { error } from '@pnotify/core';
+//npm install material-design-icons
+import icons from 'material-design-icons';
 // const debounce = require('lodash.debounce');
-
-//import { error } from '@pnotify/core';
+import { alert } from '../node_modules/@pnotify/core/dist/PNotify.js';
 
 // refs.searchForm.addEventListener('submit', onSearch);
 // btnLoadMore.refs.button.addEventListener('click', onLoadMore);
@@ -22,10 +22,9 @@ import { error } from '@pnotify/core';
 import * as basicLightbox from 'basiclightbox';
 const imageSearchInput = document.querySelector('#search-form');
 const imageSearchList = document.querySelector('.gallery');
-//const imageSearchCard = document.querySelector('.photo-card');
 const imageSearchMoreButton = document.querySelector('#search-more');
-const imageSearchAPI = new servise();
-
+const imageSearchAPI = new SearchImageAPI ();
+//const imageSearchCard = document.querySelector('.photo-card');
 imageSearchInput.addEventListener('submit', imageSearch);
 imageSearchMoreButton.addEventListener('click', imageSearchMore);
 imageSearchList.addEventListener('click', imageSearchShowFull);
@@ -39,12 +38,6 @@ function imageSearch(event) {
   buttonDisplay(imageSearchMoreButton);
 }
 
-function imageSearchMore(event) {
-  event.preventDefault();
-  imageSearchAPI.incrementPage();
-  imageSearchGetData(imageSearchInput.firstElementChild.value);
-}
-
 function imageSearchGetData(query) {
   imageSearchAPI.query = query;
   imageSearchAPI
@@ -53,15 +46,17 @@ function imageSearchGetData(query) {
       if (images.length !== 0) {
         imageSearchListMake(images);
       } else {
-        return {
+        alert({
           text: 'Not found',
-        };
+          delay: 1000,
+        });
       }
     })
     .catch(() => {
-      return {
+      alert({
         text: 'please try again ...',
-      };
+        delay: 1000,
+      });
     });
 }
 
@@ -76,6 +71,11 @@ function imageSearchListMake(images) {
       block: 'end',
     });
   }
+}
+function imageSearchMore(event) {
+  event.preventDefault();
+  imageSearchAPI.incrementPage();
+  imageSearchGetData(imageSearchInput.firstElementChild.value);
 }
 
 function imageSearchListClear() {

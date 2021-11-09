@@ -9,11 +9,15 @@ export default class SearchImageAPI {
     this.key = API_KEY;
     this.searchQuery = '';
     this.page = 1;
+    this.perPage = 12;
+    this.imgType = 'photo';
+    this.orientation = 'horizontal'
   };
 
     async fetchImages() {
    const response = await fetch(
-      `${this.url}?image_type=photo&orientation=horizontal&q=${this.searchQuery}&page=${this.page}&per_page=12&key=${this.key}`,
+     `${this.url}?image_type=photo&orientation=horizontal&q=${this.searchQuery}&page=${this.page}&per_page=12&key=${this.key}`,
+     //`${DATA_URL}?image_type=${this.imgType}&orientation=${this.orientation}&q=${this.searchQuery}&page=${this.page}&per_page=${this.perPage}&key=${API_KEY}`;
     );
 
     return response.json()
