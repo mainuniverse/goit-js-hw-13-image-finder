@@ -1,9 +1,5 @@
-const searchForm = document.querySelector('#search-form');
-const gallery = document.querySelector('.gallery');
-const loadMoreBtn = document.querySelector('button[data-action="load-more"]');
-
-export default {
-  searchForm,
-  gallery,
-  loadMoreBtn,
+const refs = {
+  searchForm: document.querySelector('.search-form'),
+  gallery: document.querySelector('.gallery'),
 };
+export default refs;
