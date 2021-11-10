@@ -9,28 +9,30 @@ export default class SearchImageAPI {
     this.key = API_KEY;
     this.searchQuery = '';
     this.page = 1;
-    this.perPage = 12;
-    this.imgType = 'photo';
-    this.orientation = 'horizontal'
+    // this.perPage = 12;
+    // this.imgType = 'photo';
+    // this.orientation = 'horizontal'
   };
 
-    async fetchImages() {
-   const response = await fetch(
-     `${this.url}?image_type=photo&orientation=horizontal&q=${this.searchQuery}&page=${this.page}&per_page=12&key=${this.key}`,
-     //`${DATA_URL}?image_type=${this.imgType}&orientation=${this.orientation}&q=${this.searchQuery}&page=${this.page}&per_page=${this.perPage}&key=${API_KEY}`;
-    );
+  //   async fetchImages() {
+  //  const response = await fetch(
+  //    `${this.url}?image_type=photo&orientation=horizontal&q=${this.searchQuery}&page=${this.page}&per_page=12&key=${this.key}`,
+  //    //`${DATA_URL}?image_type=${this.imgType}&orientation=${this.orientation}&q=${this.searchQuery}&page=${this.page}&per_page=${this.perPage}&key=${API_KEY}`;
+  //   );
 
-    return response.json()
-  };
-
-  incrementPage() {
-    this.page += 1;
+  //   return response.json()
+  // };
+    fetchImages() {
+    const url = `${this.url}?image_type=photo&orientation=horizontal&q=${this.searchQuery}&page=${this.page}&per_page=12&key=${this.key}`;
+    return fetch(url)
+      .then(response => response.json())
+      .then(images => {
+        return images.hits;
+      })
+      .catch();
   }
 
-  resetPage() {
-    this.page = 1;
-  }
-
+ 
   get query() {
     return this.searchQuery;
   }
@@ -38,4 +40,13 @@ export default class SearchImageAPI {
   set query(newQuery) {
     this.searchQuery = newQuery;
   }
+incrementPage() {
+    this.page += 1;
+  }
+
+  resetPage() {
+    this.page = 1;
+  }
+
+
 }
