@@ -14,17 +14,20 @@
   </head>
 
   <body>
+    <div class="container">
     <form class="search-form" id="search-form">
-      <input type="text" name="query" autocomplete="off" placeholder="Search images..." />
-      <button class="btn" type="submit">Search</button>
+      <input type="text" name="query" autocomplete="off" class="search-input" placeholder="Search images..." />
+      <button class="search-button" type="submit">Search</button>
     </form>
 
-    <ul class="gallery">
+    <ul class="gallery ">
       <!-- Список <li> с карточками изображений -->
     </ul>
        <!-- <button class="button_nodisplay" id="search-more">Load more</button> -->
-    <button  class="button_nodisplay" data-action="load-more">Load more</button>
-    
+    </div>
+    <button  class="show-more-button" data-action="load-more">Load more</button>
+    </div> 
     <script src="./index.js"></script>
+ 
   </body>
 </html>
