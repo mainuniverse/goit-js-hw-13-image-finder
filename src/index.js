@@ -10,23 +10,13 @@ import { alert, defaultModules } from '@pnotify/core';
 import '@pnotify/core/dist/PNotify.css';
 import * as PNotifyMobile from '@pnotify/mobile';
 import '@pnotify/mobile/dist/PNotifyMobile.css';
-
 import '@pnotify/core/dist/PNotify.css';
 import '@pnotify/desktop/dist/PNotifyDesktop';
 import '@pnotify/core/dist/BrightTheme.css';
 //npm install material-design-icons
 import icons from 'material-design-icons';
-// const debounce = require('lodash.debounce');
+import * as basicLightbox from 'basiclightbox'
 
-// const refs = {
-//   searchForm: document.querySelector('.search-form'),
-//   gallery: document.querySelector('.gallery'),
-// };
-
-// const loadMoreBtn = new LoadMoreBtn({
-//   selector: '[data-action="load-more"]',
-//   hidden: true,
-// });
 const newsApiService = new NewsApiService();
 refs.searchForm.addEventListener('submit', searchImages);
 refs.btnNextPage.style.display = 'none';
@@ -37,9 +27,11 @@ function searchImages(event) {
   clearGallery();
   newsApiService.resetPage();
   refs.btnNextPage.style.display = 'block';
+  addButtonUp();
   newsApiService.query = event.currentTarget.elements.query.value;
   if (newsApiService.query === '') {
     defaultModules.set(PNotifyMobile, {});
+    refs.btnNextPage.style.display = 'none';
     return alert({
       text: 'not found',
       delay: 1000,
@@ -78,10 +70,12 @@ refs.btnNextPage.addEventListener('click', async () => {
     behavior: 'smooth'
   });
 });
+
 refs.gallery.addEventListener('click', zoomCard);
+
 function zoomCard(e) {
   if (e.target.hasAttribute('data-action')) {
-    const basicLightbox = require('basiclightbox');
+  const basicLightbox = require('basiclightbox');
     const instance = basicLightbox.create(`
   <img src=${e.target.name} width="1000" height="800">
 `);
@@ -89,57 +83,30 @@ function zoomCard(e) {
   }
 }
 
-// refs.loadMoreBtn.addEventListener('click', () => {
-//     window.scrollTo({ top: 0, behavior: 'smooth' });
-// } )
-
-// scrollPage();
-
-// function scrollPage(){
-//   window.scrollTo({
-//     top: window.pageYOffset + documentHeight,
-//     width: 0,
-//     behavior: "smooth",
-//   });
-// }
+function addButtonUp() {
+  refs.buttonUp.classList.remove('hidden');
+  refs.buttonUp.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  });
+}
 
 // function loadMoreOption(event) {
-//   // newsApiService.fetchImages().then(imagesResult);
-//   //   if (images.length >= 12) {
-//   //   loadMoreBtn.show();
-//   // } else {
-//   //   loadMoreBtn.hide();
-//   // // }
-//   // function loadMoreOption(event) {
-//   //event.preventDefault();
-//   newsApiService.incrementPage();
-//   searchImages(refs.searchForm.firstElementChild.value);
-//   setTimeout(() => {
-//     refs.gallery.lastChild.scrollIntoView({
-//       behavior: 'smooth',
-//       block: 'start',
-//     });
-//   }, 1000);
-// }
+  // newsApiService.fetchImages().then(imagesResult);
+  //   if (images.length >= 12) {
+  //   loadMoreBtn.show();
+  // } else {
+  //   loadMoreBtn.hide();
+  // // }
 
-// imageSearchList.addEventListener('click', imageSearchShowFull);
-
-// function imageSearchShowFull(e) {
-//   e.preventDefault();
-//   if (e.target.nodeName !== 'IMG') return;
-//   basicLightbox.create(e.originalTarget.outerHTML).show();
-// }
 // if (!RegExp(/^\p{L}/, 'u').test(newsApiService.query)) {
 //   return alert({
 //     text: 'Error',
 //     delay: 1000,
 //   }
-//   function buttonNoDisplay(element) {
-//   element.classList.remove('button_display');
-//   element.classList.add('button_nodisplay');
-// }
-
-// function buttonDisplay(element) {
-//   element.classList.remove('button_nodisplay');
-//   element.classList.add('button_display');}
-// refs.btnNextPage.style.display = 'none';
+// const loadMoreBtn = new LoadMoreBtn({
+//   selector: '[data-action="load-more"]',
+//   hidden: true,
+// });
