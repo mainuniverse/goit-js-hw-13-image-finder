@@ -15,7 +15,7 @@ import '@pnotify/desktop/dist/PNotifyDesktop';
 import '@pnotify/core/dist/BrightTheme.css';
 //npm install material-design-icons
 import icons from 'material-design-icons';
-import * as basicLightbox from 'basiclightbox'
+import * as basicLightbox from 'basiclightbox';
 
 const newsApiService = new NewsApiService();
 refs.searchForm.addEventListener('submit', searchImages);
@@ -65,9 +65,10 @@ function updateImgsMarkup(images) {
 refs.btnNextPage.addEventListener('click', async () => {
   const hits = await newsApiService.fetchImages('hits');
   updateImgsMarkup(hits);
-  window.scrollTo({
+  window.scrollIntoView({
     top: window.pageYOffset + documentHeight,
-    behavior: 'smooth'
+    behavior: 'smooth',
+    block: 'end',
   });
 });
 
@@ -75,7 +76,7 @@ refs.gallery.addEventListener('click', zoomCard);
 
 function zoomCard(e) {
   if (e.target.hasAttribute('data-action')) {
-  const basicLightbox = require('basiclightbox');
+    const basicLightbox = require('basiclightbox');
     const instance = basicLightbox.create(`
   <img src=${e.target.name} width="1000" height="800">
 `);
@@ -94,19 +95,11 @@ function addButtonUp() {
 }
 
 // function loadMoreOption(event) {
-  // newsApiService.fetchImages().then(imagesResult);
-  //   if (images.length >= 12) {
-  //   loadMoreBtn.show();
-  // } else {
-  //   loadMoreBtn.hide();
-  // // }
+// newsApiService.fetchImages().then(imagesResult);
+//   if (images.length >= 12) { loadMoreBtn.show();
+// } else {   loadMoreBtn.hide(); }
 
 // if (!RegExp(/^\p{L}/, 'u').test(newsApiService.query)) {
-//   return alert({
-//     text: 'Error',
-//     delay: 1000,
-//   }
+//   return alert({text: 'Error',delay: 1000,  }
 // const loadMoreBtn = new LoadMoreBtn({
-//   selector: '[data-action="load-more"]',
-//   hidden: true,
-// });
+//   selector: '[data-action="load-more"]',hidden: true,// });
