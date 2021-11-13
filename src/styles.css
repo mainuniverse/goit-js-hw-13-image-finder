@@ -17,8 +17,9 @@ body {
   color: #212121;
 }
 .container {
-  width: 1300px;
-  margin: 0 auto;
+  /* width: 1300px; */
+  margin-left: 100px;
+  margin-right: 100px;
 }
 /* Article List */
 .search-form {
@@ -33,8 +34,7 @@ body {
   justify-content: center;
   padding: 0;
   list-style: none;
-  margin-left: auto;
-  margin-right: auto;
+  align-items: center;
 }
 .hidden {
   position: absolute;
@@ -55,7 +55,10 @@ body {
   margin-bottom: 10px;
   border: 1px solid black;
 }
-
+.stats {
+  display: flex;
+  justify-content: space-between;
+}
 .stats-item {
   display: flex;
   justify-content: space-between;
@@ -65,6 +68,7 @@ body {
   margin-bottom: 5px;
 }
 .material-icons {
+  display: flex;
   margin-right: 10px;
 }
 
@@ -99,7 +103,7 @@ body {
   margin-right: 30px;
 }
 img {
-  display: block;
+  /* display: block; */
   max-width: 100%;
   height: auto;
 }
@@ -110,20 +114,20 @@ img {
   cursor: pointer;
 }
 .gallery-item {
-  /* width: calc((100% - 5 * 10px) / 5); */
+  width: calc((100%-4 * 10px) / 4);
   margin: 15px;
+  /* width: calc(20% - 10px); */
 }
 
 .image-item {
   position: relative;
-  flex-basis: calc(100% / 3 - 30px);
+  /* flex-basis: calc(100% / 3 - 30px); */
   margin-bottom: 20px;
   margin-right: 30px;
   overflow: hidden;
+  width: 320px;
 }
-/* .image-item:not(:nth-child(3n)) {
-  margin-right: -30px;
-} */
+
 .basicLightbox {
   position: fixed;
   display: flex;
@@ -146,8 +150,8 @@ img {
   position: fixed;
   bottom: 15px;
   right: 15px;
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   border: 0;
   border-radius: 50%;
   background-color: lightgray;
@@ -155,7 +159,27 @@ img {
   background-size: 25px;
   background-repeat: no-repeat;
   background-position: 50% 50%;
+
+  /* border-radius: 50%; 
+  background-color: lightgray; 
+  <img src="https://img.icons8.com/material-rounded/24/000000/level-up.png"/>
+    background-image: url('https://img.icons8.com/ios/50/000000/page-up-button.png');
+    background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='iso-8859-1'%3F%3E%3C!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0) --%3E%3Csvg version='1.1' fill='black' id='Capa_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 512.005 512.005' style='enable-background:new 0 0 512.005 512.005;' xml:space='preserve'%3E%3Cg%3E%3Cg%3E%3Cpath d='M466.22,205.787L263.553,3.12c-4.16-4.16-10.923-4.16-15.083,0L45.804,205.787c-21.803,21.803-21.803,57.28,0,79.083 s57.28,21.803,79.083,0l77.781-77.781v251.584c0,29.397,23.936,53.333,53.333,53.333s53.333-23.936,53.333-53.333V207.088 l77.781,77.781c21.803,21.803,57.28,21.803,79.083,0C488.001,263.088,488.001,227.589,466.22,205.787z'/%3E%3C/g%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3C/svg%3E%0A");
+  background-size: 25px;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  <img src="https://img.icons8.com/ios-glyphs/30/000000/circled-up-2.png"/>
+  background-color: rgb(209, 233, 121);
 }
 .up:hover {
   background-color: greenyellow;
+}
+
+  */
+}
+.up:hover {
+  background-color: greenyellow;
+}
+.button.is-hidden {
+  display: none;
 }
