@@ -41,10 +41,11 @@ function searchImages(event) {
     });
   }
   if (!RegExp(/^\p{L}/, 'u').test(newsApiService.query)) {
+    newsApiService.resetPage();
     return alert({ text: ' undefined ', delay: 1000 });
+   
   }
 
-  //refs.btnNextPage.style.display = 'block';
   addButtonUp();
 
   newsApiService
@@ -82,7 +83,6 @@ function loadMore() {
     imagesResult(images);
   });
   window.scrollIntoView({
-    
     behavior: 'smooth',
     block: 'end',
   });
