@@ -159,8 +159,15 @@ img {
   background-size: 25px;
   background-repeat: no-repeat;
   background-position: 50% 50%;
+}
+.up:hover {
+  background-color: greenyellow;
+}
+.button.is-hidden {
+  display: none;
+}
 
-  /* border-radius: 50%; 
+/* border-radius: 50%; 
   background-color: lightgray; 
   <img src="https://img.icons8.com/material-rounded/24/000000/level-up.png"/>
     background-image: url('https://img.icons8.com/ios/50/000000/page-up-button.png');
@@ -176,10 +183,3 @@ img {
 }
 
   */
-}
-.up:hover {
-  background-color: greenyellow;
-}
-.button.is-hidden {
-  display: none;
-}
